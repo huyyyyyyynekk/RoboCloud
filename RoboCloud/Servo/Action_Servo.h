@@ -5,10 +5,10 @@
 #include "Servo.h"
 
 // Servo pin definitions
-#define Servo_Right_Hand 5 
-#define Servo_Left_Hand 18 
-#define Servo_Head 19 
-#define Servo_Body 21 
+#define Servo_Right_Hand 14 
+#define Servo_Left_Hand 16 
+#define Servo_Head 13 
+#define Servo_Body 23 
 
 // Function prototypes
 void Action_Servo(const char* emotion);
