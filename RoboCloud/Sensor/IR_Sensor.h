@@ -3,7 +3,7 @@
 
 #include "Arduino.h"
 
-#define IR_Sensor_Pin 4  // Định nghĩa chân IR sensor
+#define IR_Sensor_Pin 32
 
 int Detect_IRR_Object(); 
 int Detect_IRR_Distance();

@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-#define Touch_Sensor_Pin 6  // Định nghĩa chân cảm biến chạm
+#define Touch_Sensor_Pin 33
 
 int Detect_Touch();
 

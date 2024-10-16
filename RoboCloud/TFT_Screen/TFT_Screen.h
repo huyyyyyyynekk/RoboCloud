@@ -2,14 +2,14 @@
 #define TFT_SCREEN_H
 
 #include <TFT_22_ILI9225.h>
-#include <SPI.h>  
+#include <SPI.h>
+//#include "TFT_Image.h"  
 
 #if defined(ESP32)
 #include <SPI.h>
 extern SPIClass hspi;  
 #endif
 
-// Định nghĩa chân TFT
 #define TFT_RST 26
 #define TFT_RS  25
 #define TFT_CLK 14
@@ -18,7 +18,6 @@ extern SPIClass hspi;
 #define TFT_LED 0
 #define TFT_BRIGHTNESS 200
 
-// Màu sắc
 #define COLOR_BLACK 0x0000
 
 extern TFT_22_ILI9225 tft;
