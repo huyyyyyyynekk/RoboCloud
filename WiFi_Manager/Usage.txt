@@ -1,0 +1,2 @@
+-Python phiên bản 3.12.6
+-Import thư viện Flask
