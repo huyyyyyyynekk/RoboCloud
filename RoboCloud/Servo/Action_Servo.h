@@ -11,25 +11,23 @@
 #define Servo_Body 15 
 
 // Function prototypes
-void Action_Servo(const char* emotion);
 void Attach_Servos();
-void Head_Rise();
-void Head_Balance();
-void Head_Bow();
-void Head_Nod();
 
-void Rising_One_Hand_80(const char* action);
-void Rising_One_Hand_90(const char* action);
-void Rising_One_Hand_120(const char* action);
-void Rising_One_Hand_150(const char* action);
-void One_Hand_Return(const char* action);
+void Head_Shake();
+void Head_Balance();
+void Head_Look_From_Left_To_Right();
+void Head_Look_From_Right_To_Left();
+void Head_Turn_Small_Right();
+void Head_Turn_Small_Left();
+void Head_Turn_Big_Left();
+void Head_Turn_Big_Right();
+
+void One_Hand_Rising(const char* action, int X);
+void One_Hand_Balance(const char* action);
 void One_Hand_Waving(int X, const char* action);
 void One_Hand_Pointing(int X , const char* action);
 
-void Two_Hand_Rising_80();
-void Two_Hand_Rising_90();
-void Two_Hand_Rising_120();
-void Two_Hand_Rising_150();
+void Two_Hand_Rising(int X);
 void Two_Hand_Return();
 void Two_Hand_Waving(int X);
 void Two_Hand_Pointing(int X);
@@ -38,8 +36,13 @@ void Plinth_Turn_Small_Left();
 void Plinth_Turn_Small_Right();
 void Plinth_Turn_Big_Left();
 void Plinth_Turn_Big_Right();
-void Plinth_Return();
+void Plinth_Balance();
 void Plinth_Shaking();
+
+void Emotion_Funny();
+void Emotion_Happy();
+void Emotion_Excited();
+void Emtion_Confident();
 
 // Declare Servo objects
 extern Servo servoRightHand;
