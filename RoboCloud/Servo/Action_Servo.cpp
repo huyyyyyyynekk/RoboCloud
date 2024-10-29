@@ -149,166 +149,87 @@ void Head_Look_From_Right_To_Left() {
 }
 
 void Head_Turn_Small_Left(){
-  Head_Pos = 90 + 15;
-  servoHead.write(Head_Pos);
+  if (Head_Pos < 105){
+    Head_Pos += 5;
+    servoHead.write(Head_Pos);
+  }
 }
 
 void Head_Turn_Small_Right(){
-  Head_Pos = 90 - 15;
-  servoHead.write(Head_Pos);
+  if (Head_Pos > 75){
+    Head_Pos -= 5;
+    servoHead.write(Head_Pos);
+  }
 }
 
 void Head_Turn_Big_Left(){
-  Head_Pos = 90 + 30;
-  servoHead.write(Head_Pos);
+  if (Head_Pos < 120){
+    Head_Pos += 5;
+    servoHead.write(Head_Pos);
+  }
 }
 
 void Head_Turn_Big_Right(){
-  Head_Pos = 90 - 30;
-  servoHead.write(Head_Pos);
+  if (Head_Pos > 60){
+    Head_Pos -= 5;
+    servoHead.write(Head_Pos);
+  }
 }
 
 void Head_Balance(){
-  if (Head_First == false){
-    for (int i = 0 ; i <= 90; i+=10){
-      servoHead.write(i);
-      Head_Pos = 90;
-      delay(85);
-    }
-    Head_First = true;
+  if (Head_Pos > 90){
+    Head_Pos -= 5;
+    servoHead.write(Head_Pos);
   }
-  
-  if (Head_Pos - 90 == 15){
-    for (int i = 105; i >= 90; i-=3){
-        Head_Pos = 90;
-        servoHead.write(i);
-        delay(30);
-    }
-  }
-  else if (Head_Pos - 90 == 30){
-    for (int i = 120; i >= 90; i-=5){
-        Head_Pos = 90;
-        servoHead.write(i);
-        delay(30);
-    }
-  }
-  else if (90 - Head_Pos == 15){
-    for (int i = 75; i <= 90; i+=3){
-        Head_Pos = 90;
-        servoHead.write(i);
-        delay(30);
-    }
-  }
-  else if (90 - Head_Pos == 30){
-    for (int i = 60; i <= 90; i+=5){
-        Head_Pos = 90;
-        servoHead.write(i);
-        delay(30);
-    }
+  else if (Head_Pos < 90){
+    Head_Pos += 5;
+    servoHead.write(Head_Pos);
   }
 }
 
 /* =================================== ONE - HAND ================================= */
 void One_Hand_Rising(const char* action, int X){
   if (strcmp(action, "Left Hand") == 0){
-    servoLeftHand.write(X);
-    Left_Hand_Pos = X;
+    if (Left_Hand_Pos > X){
+     Left_Hand_Pos -= 5;
+     servoLeftHand.write(Left_Hand_Pos);  
+    }
+    else if (Left_Hand_Pos < X){
+      Left_Hand_Pos += 5;
+      servoLeftHand.write(Left_Hand_Pos);
+    }
   }
   else if (strcmp(action, "Right Hand") == 0){
-    servoRightHand.write(X);
-    Right_Hand_Pos = X;
+    if (Right_Hand_Pos > X){
+     Right_Hand_Pos -= 5;
+     servoRightHand.write(Right_Hand_Pos);  
+    }
+    else if (Right_Hand_Pos < X){
+     Right_Hand_Pos += 5;
+     servoRightHand.write(Right_Hand_Pos);
+    }
   }
 }
 
 void One_Hand_Balance(const char* action){
   if (strcmp(action, "Left Hand") == 0){
-    if (Left_Hand_First == false){
-      for (int i = 0; i <= 60; i+=15){
-      servoLeftHand.write(i);
-      delay(85); 
-      }
-      Left_Hand_Pos = 60;
-      Left_Hand_First = true;
+    if (Left_Hand_Pos > 60){
+      Left_Hand_Pos -= 5;
+      servoLeftHand.write(Left_Hand_Pos);
     }
-    if (60 - Left_Hand_Pos == 30){
-      for (int i = 30; i <= 60; i+=5){
-        servoLeftHand.write(i);
-        delay(85);
-      }
-      Left_Hand_Pos = 60;
-    }
-    else if (Left_Hand_Pos - 60 == 30){
-      for (int i = 90; i >= 60; i-=5){
-        servoLeftHand.write(i);
-        delay(85);
-      }
-      Left_Hand_Pos = 60;
-    }
-    else if (Left_Hand_Pos - 60 == 60){
-      for (int i = 120; i >= 60; i-=5){
-        servoLeftHand.write(i);
-        delay(85);
-      }
-      Left_Hand_Pos = 60;
-    }
-    else if (Left_Hand_Pos - 60 == 90){
-      for (int i = 150; i >= 60; i-=5){
-        servoLeftHand.write(i);
-        delay(85);
-      }
-      Left_Hand_Pos = 60;
-    }
-    else if (Left_Hand_Pos - 60 == 120){
-      for (int i = 180; i >= 60; i-=5){
-        servoLeftHand.write(i);
-        delay(85);
-      }
-      Left_Hand_Pos = 60;
+    else if (Left_Hand_Pos){
+      Left_Hand_Pos += 5;
+      servoLeftHand.write(Left_Hand_Pos);
     }
   }
   else if (strcmp(action, "Right Hand") == 0){
-    if (Right_Hand_First == false){
-      for (int i = 0; i <= 60; i+=15){
-      servoRightHand.write(i);
-      delay(85); 
-      }
-    Right_Hand_Pos = 60;
-    Right_Hand_First = true;
+    if (Right_Hand_Pos > 60){
+      Right_Hand_Pos -= 5;
+      servoRightHand.write(Right_Hand_Pos);
     }
-    if (60 - Right_Hand_Pos == 30){
-      for (int i = 30; i <= 60; i+=5){
-        servoRightHand.write(i);
-        delay(85);
-      }
-      Right_Hand_Pos = 60;
-    }
-    else if (Right_Hand_Pos - 60 == 30){
-      for (int i = 90; i >= 60; i-=5){
-        servoRightHand.write(i);
-        delay(85);
-      }
-      Right_Hand_Pos = 60;
-    }
-    else if (Right_Hand_Pos - 60 == 60){
-      for (int i = 120; i >= 60; i-=5){
-        servoRightHand.write(i);
-        delay(85);
-      }
-      Right_Hand_Pos = 60;
-    }
-    else if (Right_Hand_Pos - 60 == 90){
-      for (int i = 150; i >= 60; i-=5){
-        servoRightHand.write(i);
-        delay(85);
-      }
-      Right_Hand_Pos = 60;
-    }
-    else if (Right_Hand_Pos - 60 == 120){
-      for (int i = 180; i >= 60; i-=5){
-        servoRightHand.write(i);
-        delay(85);
-      }
-      Right_Hand_Pos = 60;
+    else if (Right_Hand_Pos < 60){
+      Right_Hand_Pos += 5;
+      servoRightHand.write(Right_Hand_Pos);
     }
   }
 }
@@ -325,9 +246,14 @@ void One_Hand_Waving(int X, const char* action){
           step_OHW_1 = 1;
           break;
       case 1:
-          Left_Hand_Pos = X + 30;
-          servoLeftHand.write(Left_Hand_Pos);
-          step_OHW_1 = 2;
+          if (Left_Hand_Pos < X + 30){
+            Left_Hand_Pos += 5;
+            servoLeftHand.write(Left_Hand_Pos);
+          }
+          if (Left_Hand_Pos == X + 30){
+           step_OHW_1 = 2;
+            break; 
+          }
           break;
       case 2:
           Left_Hand_Pos = X; 
@@ -343,9 +269,14 @@ void One_Hand_Waving(int X, const char* action){
           step_OHW_2 = 1;
           break;
       case 1:
-          Right_Hand_Pos = X + 30;
-          servoRightHand.write(Right_Hand_Pos);
-          step_OHW_2 = 2;
+          if (Right_Hand_Pos < X + 30){
+            Right_Hand_Pos += 5;
+            servoRightHand.write(Right_Hand_Pos);
+          }
+          if (Right_Hand_Pos == X + 30){
+           step_OHW_1 = 2;
+            break; 
+          }
           break;
       case 2:
           Right_Hand_Pos = X; 
@@ -368,9 +299,14 @@ void One_Hand_Pointing(int X , const char* action){
           step_OHP_1 = 1;
           break;
       case 1:
-          Left_Hand_Pos = X + 10;
-          servoLeftHand.write(Left_Hand_Pos);
-          step_OHP_1 = 2;
+          if (Left_Hand_Pos < X + 10){
+            Left_Hand_Pos += 5;
+            servoLeftHand.write(Left_Hand_Pos);
+          }
+          if (Left_Hand_Pos == X + 10){
+           step_OHW_1 = 2;
+            break; 
+          }
           break;
       case 2:
           Left_Hand_Pos = X; 
@@ -386,9 +322,14 @@ void One_Hand_Pointing(int X , const char* action){
           step_OHP_2 = 1;
           break;
       case 1:
-          Right_Hand_Pos = X + 10;
-          servoRightHand.write(Right_Hand_Pos);
-          step_OHP_2 = 2;
+          if (Right_Hand_Pos < X + 10){
+            Right_Hand_Pos += 5;
+            servoRightHand.write(Right_Hand_Pos);
+          }
+          if (Right_Hand_Pos == X + 10){
+           step_OHW_1 = 2;
+            break; 
+          }
           break;
       case 2:
           Right_Hand_Pos = X; 
@@ -400,15 +341,6 @@ void One_Hand_Pointing(int X , const char* action){
 }
 
 /* =================================== TWO - HAND ================================= */
-void Two_Hand_Rising(int X){
-  servoLeftHand.write(X);
-  servoRightHand.write(X);
-}
-
-void Two_Hand_Return(){
-  servoLeftHand.write(30);
-  servoRightHand.write(30);
-}
 
 void Two_Hand_Waving(int X){
 unsigned long currentMillis_THW = millis();  
@@ -422,10 +354,13 @@ unsigned long currentMillis_THW = millis();
           step_THW = 1;
           break;
       case 1:
-          Two_Hand_Pos = X + 30;
-          servoLeftHand.write(Two_Hand_Pos);
-          servoRightHand.write(Two_Hand_Pos);
-          step_THW = 2;
+          if (Two_Hand_Pos < X + 30){
+            Two_Hand_Pos += 5;
+            servoLeftHand.write(Two_Hand_Pos);
+            servoRightHand.write(Two_Hand_Pos);
+            step_THW = 2;
+            break;
+          }
           break;
       case 2:
           Two_Hand_Pos = X;
@@ -448,10 +383,13 @@ void Two_Hand_Pointing(int X){
           step_THP = 1;
           break;
       case 1:
-          Two_Hand_Pos = X + 30;
-          servoLeftHand.write(Two_Hand_Pos);
-          servoRightHand.write(Two_Hand_Pos);
-          step_THP = 2;
+          if (Two_Hand_Pos < X + 10){
+            Two_Hand_Pos += 5;
+            servoLeftHand.write(Two_Hand_Pos);
+            servoRightHand.write(Two_Hand_Pos);
+            step_THW = 2;
+            break;
+          }
           break;
       case 2:
           Two_Hand_Pos = X;
@@ -466,109 +404,64 @@ void Two_Hand_Pointing(int X){
 /* =================================== PLINTH ================================= */
 
 void Plinth_Turn_Small_Left(){
-  Plinth_Pos = 90 + 30;
-  servoBody.write(Plinth_Pos);
+  if (Plinth_Pos < 120){
+    Plinth_Pos += 5;
+    servoBody.write(Plinth_Pos);
+  }
 }
 
 void Plinth_Turn_Small_Right(){
-  Plinth_Pos = 90 - 30;
-  servoBody.write(Plinth_Pos);
+  if (Plinth_Pos > 60){
+    Plinth_Pos -= 5;
+    servoBody.write(Plinth_Pos);
+  }
 }
 
 void Plinth_Turn_Big_Left(){
-  Plinth_Pos = 90 + 60;
-  servoBody.write(Plinth_Pos);
+  if (Plinth_Pos < 150){
+    Plinth_Pos += 5;
+    servoBody.write(Plinth_Pos);
+  }
 }
 
 void Plinth_Turn_Big_Right(){
-  Plinth_Pos = 90 - 60;
-  servoBody.write(Plinth_Pos);
+  if (Plinth_Pos > 30){
+    Plinth_Pos -= 5;
+    servoBody.write(Plinth_Pos);
+  }
 }
 
 void Plinth_Balance(){
-  if (Plinth_First == false){
-    for (int i = 0 ; i <= 90; i+=10){
-      servoBody.write(i);
-      Plinth_Pos = 90;
-      delay(85);
-    }
-    Plinth_First = true;
+  if (Plinth_Pos > 90){
+    Plinth_Pos -= 5;
+    servoBody.write(Plinth_Pos);
   }
-  if (Plinth_Pos - 90 == 30){
-    for (int i = 120; i >= 90; i-=3){
-        Plinth_Pos = 90;
-        servoBody.write(i);
-        delay(30);
-    }
-  }
-  else if (Plinth_Pos - 90 == 60){
-    for (int i = 150; i >= 90; i-=5){
-        Plinth_Pos = 90;
-        servoBody.write(i);
-        delay(30);
-    }
-  }
-  else if (90 - Plinth_Pos == 30){
-    for (int i = 60; i <= 90; i+=3){
-        Plinth_Pos = 90;
-        servoBody.write(i);
-        delay(30);
-    }
-  }
-  else if (90 - Plinth_Pos == 60){
-    for (int i = 30; i <= 90; i+=5){
-        Plinth_Pos = 90;
-        servoBody.write(i);
-        delay(30);
-    }
+  else if (Plinth_Pos < 90){
+    Plinth_Pos += 5;
+    servoBody.write(Plinth_Pos);
   }
 }
 
-void Plinth_Shaking(){
-    servoBody.write(90 + 15);
-    delay(200);
-    servoBody.write(90 - 15);
-    delay(200);
-    servoBody.write(90);
-    delay(200);
-  }
-
 /*==============================EMOTION=================================*/
-void Emotion_Happy(){
-        if (Head_Pos - 90 == 15){
-          for (int i = 105; i >= 90; i-=3){
-               Head_Pos = 90;
-               servoHead.write(i);
-               delay(30);
-          }
-         }
-          else if (Head_Pos - 90 == 30){
-            for (int i = 120; i >= 90; i-=5){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            }  
-          }
-          else if (90 - Head_Pos == 15){
-            for (int i = 75; i <= 90; i+=3){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            } 
-          }
-          else if (90 - Head_Pos == 30){
-            for (int i = 60; i <= 90; i+=5){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            } 
-          }     
-  unsigned long currentMillis_Happy = millis();  
-  if (currentMillis_Happy - previousMillis_Happy >= 100) {
+void Action_Servo(const char* action){
+  if (strcmp(action,"Happy") == 0){
+    unsigned long currentMillis_Happy = millis();  
+    if (currentMillis_Happy - previousMillis_Happy >= 100) {
     previousMillis_Happy = currentMillis_Happy;    
     switch (step_Happy) {
       case 0:
-         step_Happy = 1;
+         if (Head_Pos > 90){
+            Head_Pos -= 5;
+            servoHead.write(Head_Pos);
+          }
+         else if (Head_Pos < 90){
+            Head_Pos += 5;
+            servoHead.write(Head_Pos);
+         }
+         if (Head_Pos == 90){
+          step_Happy = 1;
+          break;
+         }
          break;
       case 1:
          Left_Hand_Pos += 5;
@@ -625,9 +518,8 @@ void Emotion_Happy(){
          break;      
     }
   }
-}
-
-void Emotion_Funny(){
+ }
+ else if (strcmp(action,"Funny") == 0){
   unsigned long currentMillis_Funny = millis();  
   if (currentMillis_Funny - previousMillis_Funny >= 200) {
     previousMillis_Funny = currentMillis_Funny;    
@@ -675,9 +567,8 @@ void Emotion_Funny(){
          break;       
     }
   }
-}
-
-void Emotion_Excited(){
+ }
+ else if (strcmp(action,"Excited") == 0){
   Head_Shake();
   unsigned long currentMillis_Excited = millis();  
   if (currentMillis_Excited - previousMillis_Excited >= 140) {
@@ -714,59 +605,44 @@ void Emotion_Excited(){
          break;            
     }
   }
-}
-
-void Emtion_Confident(){
-  if (Head_Pos - 90 == 15){
-          for (int i = 105; i >= 90; i-=3){
-               Head_Pos = 90;
-               servoHead.write(i);
-               delay(30);
-          }
-         }
-          else if (Head_Pos - 90 == 30){
-            for (int i = 120; i >= 90; i-=5){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            }  
-          }
-          else if (90 - Head_Pos == 15){
-            for (int i = 75; i <= 90; i+=3){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            } 
-          }
-          else if (90 - Head_Pos == 30){
-            for (int i = 60; i <= 90; i+=5){
-                Head_Pos = 90;
-                servoHead.write(i);
-                delay(30);
-            } 
-          }
+ }
+ else if (strcmp(action,"Confident") == 0){
   unsigned long currentMillis_Confident = millis();  
-  if (currentMillis_Confident - previousMillis_Confident >= 140) {
+  if (currentMillis_Confident - previousMillis_Confident >= 200) {
     previousMillis_Confident = currentMillis_Confident;    
     switch (step_Confident) {
       case 0 :
+        if (Head_Pos > 90){
+            Head_Pos -= 5;
+            servoHead.write(Head_Pos);
+          }
+         else if (Head_Pos < 90){
+            Head_Pos += 5;
+            servoHead.write(Head_Pos);
+         }
+         if (Head_Pos == 90){
+          step_Confident = 1;
+          break;
+         }
+         break;
+      case 1 :
         Right_Hand_Pos += 5;
         servoRightHand.write(Right_Hand_Pos);
         if (Right_Hand_Pos >= 120){
           Right_Hand_Pos = 120;
-          step_Confident = 1;
+          step_Confident = 2;
           break;
         }
         break;
-      case 1 :
+      case 2 :
         Right_Hand_Pos -= 5;
         servoRightHand.write(Right_Hand_Pos);
         if (Right_Hand_Pos <= 90){
           Right_Hand_Pos = 90;
-          step_Confident = 1;
           break;
         }
         break;    
     }
   }
+ }
 }

@@ -39,15 +39,11 @@ void Plinth_Turn_Big_Right();
 void Plinth_Balance();
 void Plinth_Shaking();
 
-void Emotion_Funny();
-void Emotion_Happy();
-void Emotion_Excited();
-void Emtion_Confident();
+void Action_Servo(const char* action);
 
 // Declare Servo objects
 extern Servo servoRightHand;
 extern Servo servoLeftHand;
 extern Servo servoHead;
 extern Servo servoBody;
-
 #endif
