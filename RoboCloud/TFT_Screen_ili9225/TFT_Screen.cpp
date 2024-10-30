@@ -19,21 +19,37 @@ void setup_Display() {
   tft.setBackgroundColor(COLOR_BLACK);
 }
 
-void Print_Emotion(const char* Emote) {
-    if (strcmp(Emote, "Smile") == 0) {
-      tft.drawBitmap(12,3,Smile_1,195,170);
-      delay(50);
-      tft.drawBitmap(12,3,Smile_2,195,170);  
-      delay(50);
-      tft.drawBitmap(12,3,Smile_3,195,170);
-      delay(50);
-      tft.drawBitmap(12,3,Smile_4,195,170);
-      delay(50);
-      tft.drawBitmap(12,3,Smile_5,195,170);
-      delay(50);
-      tft.drawBitmap(12,3,Smile_6,195,170);
-      delay(50);
-      tft.drawBitmap(12,3,Smile_7,195,170);  
-      delay(50);
+void LCD_Display(const char* Emote) {
+    if (strcmp(Emote, "Funny") == 0) {
+      tft.drawBitmap(12,3,Funny1,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Funny3,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Funny4,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Funny5,195,170);
+      delay(75);
+    }
+    else if (strcmp(Emote, "Happy") == 0){
+      tft.drawBitmap(12,3,Relax1,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Relax4,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Relax5,195,170);
+      delay(75);
+    }
+    else if (strcmp(Emote, "Excited") == 0){
+      tft.drawBitmap(12,3,Cute1,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Cute4,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Cute5,195,170);
+      delay(75);
+    }
+    else if (strcmp(Emote, "Confident") == 0){
+      tft.drawBitmap(12,3,Im1,195,170);
+      delay(75);
+      tft.drawBitmap(12,3,Im2,195,170);  
+      delay(75);
     }
 }

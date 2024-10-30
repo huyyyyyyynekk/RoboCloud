@@ -23,6 +23,6 @@ extern SPIClass hspi;
 extern TFT_22_ILI9225 tft;
 
 void setup_Display();
-void Print_Emotion(const char* Emote);
+void LCD_Display(const char* Emote);
 
 #endif
