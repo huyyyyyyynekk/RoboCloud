@@ -14,6 +14,8 @@
 
 void LCD_Display(const char* Emote);
 void setup_Display();
+void Funny();
+void Cute();
 
 extern TFT_eSPI tft ;
 #endif
