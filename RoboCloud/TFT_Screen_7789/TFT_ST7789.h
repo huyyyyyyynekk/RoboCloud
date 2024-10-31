@@ -13,6 +13,7 @@
 */
 
 void LCD_Display(const char* Emote);
+void setup_Display();
 
 extern TFT_eSPI tft ;
 #endif

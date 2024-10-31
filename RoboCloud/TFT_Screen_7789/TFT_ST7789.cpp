@@ -11,6 +11,6 @@ void setup_Display(){
 
 void LCD_Display(const char* Emote){
   if (strcmp(Emote,"Test") == 0){
-    tft.pushImage(0,0,Cat2,320,240);
+    tft.pushImage(0,0,320,240,Cat2);
   }
 }
