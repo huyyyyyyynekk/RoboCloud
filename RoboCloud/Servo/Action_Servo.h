@@ -12,7 +12,17 @@
 
 // Function prototypes
 void Attach_Servos();
-
+void Happy_Head();
+void Happy_Hand();
+void Happy_Plinth();
+void Funny_Head();
+void Funny_Hand();
+void Funny_Plinth();
+void Excited_Head();
+void Excited_Hand ();
+void Excited_Plinth();
+void Confident_Head();
+void Confident_Hand();
 void Action_Servo(const char* action);
 
 // Declare Servo objects
