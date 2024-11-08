@@ -60,6 +60,14 @@ int step_Funny_HT_Hand = 0;
 int step_Happy_HT_Hand = 0;
 int step_Happy_HT_Plinth = 0;
 
+int Funny_Head_Millis = 0;
+int Funny_Hand_Millis = 0;
+int Funny_Plinth_Millis = 0;
+
+int Happy_Head_Millis = 0;
+int Happy_Hand_Millis = 0;
+int Happy_Plinth_Millis = 0;
+
 Servo servoRightHand;
 Servo servoLeftHand;
 Servo servoHead;
@@ -75,10 +83,21 @@ void Attach_Servos() {
 
 /* =================================== HEAD ================================= */
 
-
 void Funny_HT_Head(){
+  if (step_Funny_HT_Head == 0){
+    int Pos_Funny_HT_Head = abs(120 - Head_Pos) / 5;
+    Funny_Head_Millis = (Pos_Funny_HT_Head != 0) ? (500 / Pos_Funny_HT_Head) : 0;
+  }
+  else if (step_Funny_HT_Head == 1){
+    int Pos_Funny_HT_Head = abs(60 - Head_Pos) / 5;
+    Funny_Head_Millis = (Pos_Funny_HT_Head != 0) ? (500 / Pos_Funny_HT_Head) : 0;
+  }
+  else if (step_Funny_HT_Head == 2){
+    int Pos_Funny_HT_Head = abs(90 - Head_Pos) / 5;
+    Funny_Head_Millis = (Pos_Funny_HT_Head != 0) ? (500 / Pos_Funny_HT_Head) : 0;
+  }
   unsigned long currentMillis_Funny_HT_Head = millis();
-  if (currentMillis_Funny_HT_Head - previousMillis_Funny_HT_Head > 70){
+  if (currentMillis_Funny_HT_Head - previousMillis_Funny_HT_Head >= Funny_Head_Millis){
     previousMillis_Funny_HT_Head = currentMillis_Funny_HT_Head;
     switch (step_Funny_HT_Head){
       case 0 :
@@ -116,8 +135,20 @@ void Funny_HT_Head(){
 }
 
 void Funny_HT_Hand(){
+  if (step_Funny_HT_Hand == 0){
+    int maxDistance_Funny_HT_Hand = max(abs(90 - Left_Hand_Pos), abs(90 - Right_Hand_Pos));
+    Funny_Hand_Millis = (maxDistance_Funny_HT_Hand > 0) ? 500 / (maxDistance_Funny_HT_Hand / 5) : 0;
+  }
+  else if (step_Funny_HT_Hand == 1){
+    int maxDistance_Funny_HT_Hand = max(abs(30 - Left_Hand_Pos), abs(30 - Right_Hand_Pos));
+    Funny_Hand_Millis = (maxDistance_Funny_HT_Hand > 0) ? 500 / (maxDistance_Funny_HT_Hand / 5) : 0;
+  }
+  else if (step_Funny_HT_Hand == 2){
+    int maxDistance_Funny_HT_Hand = max(abs(60 - Left_Hand_Pos), abs(60 - Right_Hand_Pos));
+    Funny_Hand_Millis = (maxDistance_Funny_HT_Hand > 0) ? 500 / (maxDistance_Funny_HT_Hand / 5) : 0;
+  }
   unsigned long currentMillis_Funny_HT_Hand = millis();
-  if (currentMillis_Funny_HT_Hand - previousMillis_Funny_HT_Hand > 65){
+  if (currentMillis_Funny_HT_Hand - previousMillis_Funny_HT_Hand >= Funny_Hand_Millis){
     previousMillis_Funny_HT_Hand = currentMillis_Funny_HT_Hand;
     switch (step_Funny_HT_Hand) {
       case 0 :
@@ -172,8 +203,10 @@ void Funny_HT_Hand(){
 }
 
 void Funny_HT_Plinth(){
+  int Pos_Funny_HT_Plinth = abs(90 - Plinth_Pos) / 5 ;
+  Funny_Plinth_Millis = (Pos_Funny_HT_Plinth != 0) ? (500 / Pos_Funny_HT_Plinth) : 0;
   unsigned long currentMillis_Funny_HT_Plinth = millis();
-  if (currentMillis_Funny_HT_Plinth - previousMillis_Funny_HT_Plinth > 100){
+  if (currentMillis_Funny_HT_Plinth - previousMillis_Funny_HT_Plinth >= Funny_Plinth_Millis){
     previousMillis_Funny_HT_Plinth = currentMillis_Funny_HT_Plinth;
     if (Plinth_Pos > 90){
       Plinth_Pos -= 5;
@@ -186,8 +219,10 @@ void Funny_HT_Plinth(){
 }
 
 void Happy_HT_Head(){
+  int Pos_Happy_HT_Head = abs(60 - Head_Pos) / 5;
+  Happy_Head_Millis = (Pos_Happy_HT_Head != 0) ? (500 / Pos_Happy_HT_Head) : 0;
   unsigned long currentMillis_Happy_HT_Head = millis();
-  if (currentMillis_Happy_HT_Head - previousMillis_Happy_HT_Head > 80){
+  if (currentMillis_Happy_HT_Head - previousMillis_Happy_HT_Head >= Happy_Head_Millis){
     previousMillis_Happy_HT_Head = currentMillis_Happy_HT_Head;
     if (Head_Pos > 60){
       Head_Pos -= 5;
@@ -200,8 +235,16 @@ void Happy_HT_Head(){
 }
 
 void Happy_HT_Hand(){
+  if (step_Happy_HT_Hand == 0){
+    int maxDistance_Happy_HT_Hand = max(abs(150 - Left_Hand_Pos), abs(150 - Right_Hand_Pos));
+    Happy_Hand_Millis = (maxDistance_Happy_HT_Hand > 0) ? 500 / (maxDistance_Happy_HT_Hand / 5) : 0;
+  }
+  else if (step_Happy_HT_Hand == 1){
+    int maxDistance_Happy_HT_Hand = max(abs(60 - Left_Hand_Pos), abs(60 - Right_Hand_Pos));
+    Happy_Hand_Millis = (maxDistance_Happy_HT_Hand > 0) ? 500 / (maxDistance_Happy_HT_Hand / 5) : 0;
+  }
   unsigned long currentMillis_Happy_HT_Hand = millis();
-  if (currentMillis_Happy_HT_Hand - previousMillis_Happy_HT_Hand > 30){
+  if (currentMillis_Happy_HT_Hand - previousMillis_Happy_HT_Hand >= Happy_Hand_Millis){
     previousMillis_Happy_HT_Hand = currentMillis_Happy_HT_Hand;
     switch (step_Happy_HT_Hand){
       case 0 :
@@ -244,8 +287,20 @@ void Happy_HT_Hand(){
 }
 
 void Happy_HT_Plinth(){
+  if (step_Happy_HT_Plinth == 0){
+    int Pos_Happy_HT_Plinth = abs(120 - Head_Pos) / 5;
+    Happy_Plinth_Millis = (Pos_Happy_HT_Plinth != 0) ? (500 / Pos_Happy_HT_Plinth) : 0;
+  }
+  else if (step_Happy_HT_Plinth == 1){
+    int Pos_Happy_HT_Plinth = abs(90 - Head_Pos) / 5;
+    Happy_Plinth_Millis = (Pos_Happy_HT_Plinth != 0) ? (500 / Pos_Happy_HT_Plinth) : 0;
+  }
+  else if (step_Happy_HT_Plinth == 2){
+    int Pos_Happy_HT_Plinth = abs(60 - Head_Pos) / 5;
+    Happy_Plinth_Millis = (Pos_Happy_HT_Plinth != 0) ? (500 / Pos_Happy_HT_Plinth) : 0;
+  }
   unsigned long currentMillis_Happy_HT_Plinth = millis();
-  if (currentMillis_Happy_HT_Plinth - previousMillis_Happy_HT_Plinth > 90){
+  if (currentMillis_Happy_HT_Plinth - previousMillis_Happy_HT_Plinth >= Happy_Plinth_Millis){
     previousMillis_Happy_HT_Plinth = currentMillis_Happy_HT_Plinth;
     switch (step_Happy_HT_Plinth){
       case 0 :
