@@ -12,6 +12,15 @@
 
 // Function prototypes
 void Attach_Servos();
+void Funny_HT_Head();
+void Funny_HT_Hand();
+void Funny_HT_Plinth();
+void Happy_HT_Head();
+void Happy_HT_Hand();
+void Happy_HT_Plinth();
+void Balance_Head();
+void Balance_Hand();
+void Balance_Plinth();
 void Happy_Head();
 void Happy_Hand();
 void Happy_Plinth();
