@@ -12,26 +12,32 @@
 
 // Function prototypes
 void Attach_Servos();
+void Head_Plinth_Return(int Target, int &Body_pos, int time, Servo &servo);
 void Funny_HT_Head();
 void Funny_HT_Hand();
-void Funny_HT_Plinth();
-void Happy_HT_Head();
 void Happy_HT_Hand();
 void Happy_HT_Plinth();
+void Cute_HT_LeftHand();
+void Cute_HT_RightHand();
+void Cute_HT_Plinth();
+void Shy_HT_Head();
+void Shy_HT_Hand();
+void Guilty_HT_Hand();
+void Considering_HT_Hand();
+void Flattering_HT_Hand();
+void Presenting_HT_Hand();
+void Presenting_HT_Plinth();
+void Demonstrate_HT_Hand();
+void Demonstrate_HT_Plinth();
+void Thinking_HT_LeftHand();
+void Thinking_HT_RightHand();
+void Thinking_HT_Plinth();
+void Woo_HT_Head();
+void Woo_HT_Hand();
+void Woo_HT_Plinth();
 void Balance_Head();
 void Balance_Hand();
 void Balance_Plinth();
-void Happy_Head();
-void Happy_Hand();
-void Happy_Plinth();
-void Funny_Head();
-void Funny_Hand();
-void Funny_Plinth();
-void Excited_Head();
-void Excited_Hand ();
-void Excited_Plinth();
-void Confident_Head();
-void Confident_Hand();
 void Action_Servo(const char* action);
 
 // Declare Servo objects
@@ -39,4 +45,5 @@ extern Servo servoRightHand;
 extern Servo servoLeftHand;
 extern Servo servoHead;
 extern Servo servoBody;
+
 #endif
